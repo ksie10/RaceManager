@@ -20,10 +20,24 @@ public class RaceSystem {
     }
 
     public void upgradeCategory(Racer racer) {
-        // TODO
-    }
+            if (racer == null) {
+                throw new IllegalArgumentException("Racer cannot be null");
+            }
+            
+            int currentLevel = racer.getCatLevel();
+            int maxLevel = 5; // Assuming categories 1-5 (1 being beginner, 5 being expert)
+            
+            if (currentLevel < maxLevel) {
+                racer.setCatLevel(currentLevel + 1);
+                System.out.println("Racer " + racer.getName() + " upgraded from category " 
+                                 + currentLevel + " to category " + racer.getCatLevel());
+            } else {
+                System.out.println("Racer " + racer.getName() + " is already at the highest category level (" 
+                                 + maxLevel + ")");
+            }
+        }
 
-    // getters/setters ...
+
 
 
     public Race createRace(Date date, String type, double miles, String route, boolean official, int limit, Date lastRegDate, int catRequired) {
@@ -56,3 +70,4 @@ public class RaceSystem {
 
 
 }
+
